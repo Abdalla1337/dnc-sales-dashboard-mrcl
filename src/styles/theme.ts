@@ -1,4 +1,4 @@
-import { Theme } from '@types'
+import { Theme } from '@/types'
 
 export const lightTheme: Theme = {
   appBackground: '#FFF',
@@ -11,8 +11,8 @@ export const lightTheme: Theme = {
     alert: '#E80000',
     alertColor: '#FFF',
     alertHover: '#80000',
-    disabled: '#CCC',
-    disabledColor: '#666',
+    disabled: '#CCCCCC',
+    disabledColor: '#666666',
     primary: '#0C70F2',
     primaryColor: '#FFF',
     primaryHover: '#0061DE',
@@ -22,14 +22,14 @@ export const lightTheme: Theme = {
     background: '#FFF',
     border: '#E0E0E0',
     success: '#008000',
-    warning: 'F7A300',
+    warning: '#F7A300',
   },
   textInput: {
     active: '#FFF',
     activeColor: '#000',
     borderColor: '#E0E0E0',
     disabled: '#EEE',
-    disabledColor: '666',
+    disabledColor: '#666',
     disabledBorderColor: '#E0E0E0',
     placeholderColor: '#666',
   },
@@ -62,14 +62,14 @@ export const darkTheme: Theme = {
     background: '#0F1535',
     border: '#21497D',
     success: '#008000',
-    warning: 'F7A300',
+    warning: '#F7A300',
   },
   textInput: {
     active: '#0F1235',
     activeColor: '#FFF',
     borderColor: '#21497D',
     disabled: '#282D49',
-    disabledColor: '58677C',
+    disabledColor: '#58677C',
     disabledBorderColor: '#2E3F55',
     placeholderColor: '#89A7CE',
   },
