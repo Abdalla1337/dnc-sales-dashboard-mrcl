@@ -67,7 +67,7 @@ function CustomChart(props: CustomChartProps) {
       {
         data: data,
         borderColor: 'rgb(12, 112, 242)',
-        backgroundColo: 'rgba(12, 112, 242, 1)',
+        backgroundColor: 'rgba(12, 112, 242, 1)',
       },
     ],
   }

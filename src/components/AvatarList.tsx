@@ -8,6 +8,7 @@ function AvatarList(props: AvatarsListProps) {
     <>
       {props.listData.map((item, index) => (
         <Box
+          key={index}
           sx={{
             alignItems: 'center',
             display: 'flex',

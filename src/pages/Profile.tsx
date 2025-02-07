@@ -1,22 +1,107 @@
-import { useContext } from 'react'
-import { CardComponent, Header, StyledH2, StyledButton } from '@/components'
+import { ChangeEvent, useContext, useEffect } from 'react'
+import { AppThemeContext } from '@/contexts/AppThemeContext'
 
 //COMPONENTS
-import { AppThemeContext } from '@/contexts/AppThemeContext'
+
+import {
+  CardComponent,
+  FormComponent,
+  Header,
+  StyledH2,
+  StyledButton,
+} from '@/components'
 import { Container, Grid } from '@mui/material'
+
+//HOOK
+import { useFormValidation, useGet } from '@/hooks'
 
 //SERVICES
 import { logout } from '@/services'
 
+// TYPES
+import { InputProps, ProfileData, ProfileEditableData } from '@/types'
+
 function Profile() {
   const themeContext = useContext(AppThemeContext)
+
+  //HOOKS
+  const {
+    data: profileData,
+    loading: profileLoading,
+    error: profileError,
+  } = useGet<ProfileData>('profile')
+
+  useEffect(() => {
+    if (profileData) {
+      handleChange(0, profileData.name)
+      handleChange(1, profileData.email)
+      handleChange(2, profileData.phone)
+    }
+  }, [profileData])
+
+  // FORM
+  const inputs: InputProps[] = [
+    {
+      name: 'name',
+      type: 'text',
+      placeholder: 'Nome',
+      required: true,
+    },
+    {
+      name: 'email',
+      type: 'email',
+      placeholder: 'Email',
+      disabled: true,
+    },
+    {
+      name: 'phone',
+      type: 'tel',
+      placeholder: 'Telefone',
+      required: true,
+    },
+  ]
+  const { formValues, formValid, handleChange } = useFormValidation(inputs)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+  }
+  const handleDelete = async () => {
+    confirm('WIP...')
+  }
   return (
     <>
       <Header />
       <Container className="mb2" maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
-            <CardComponent>Seus dados...</CardComponent>
+            <CardComponent>
+              <StyledH2 className="mb-1">Seus Dados</StyledH2>
+              <FormComponent
+                inputs={inputs.map((input, index) => ({
+                  ...input,
+                  type: input.type,
+                  placeholder: input.placeholder,
+                  value: formValues[index] || '',
+                  onChange: (e: ChangeEvent<HTMLInputElement>) => {
+                    handleChange(index, (e.target as HTMLInputElement).value)
+                  },
+                }))}
+                buttons={[
+                  {
+                    className: 'primary',
+                    disabled: !formValid,
+                    type: 'submit',
+                    onClick: handleSubmit,
+                    children: 'Atualizar meu perfil',
+                  },
+                  {
+                    className: 'alert',
+                    type: 'button',
+                    onClick: handleDelete,
+                    children: 'Excluir minha conta',
+                  },
+                ]}
+              />
+            </CardComponent>
           </Grid>
           <Grid item xs={12} sm={6}>
             <CardComponent>
