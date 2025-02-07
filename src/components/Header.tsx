@@ -28,7 +28,7 @@ function Header() {
           <Link to="/perfil">
             <Avatar
               alt="DNC Avatar"
-              src="dnc-avatar.svg"
+              src="/dnc-avatar.svg"
               sx={{ width: pxToRem(40), height: pxToRem(40) }}
             />
           </Link>
