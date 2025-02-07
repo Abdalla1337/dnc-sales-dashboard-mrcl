@@ -19,7 +19,11 @@ import { useFormValidation, useGet } from '@/hooks'
 import { logout } from '@/services'
 
 // TYPES
-import { InputProps, ProfileData, ProfileEditableData } from '@/types'
+import {
+  InputProps,
+  ProfileData,
+  //ProfileEditableData
+} from '@/types'
 
 function Profile() {
   const themeContext = useContext(AppThemeContext)
@@ -27,8 +31,8 @@ function Profile() {
   //HOOKS
   const {
     data: profileData,
-    loading: profileLoading,
-    error: profileError,
+    //   loading: profileLoading,
+    //    error: profileError,
   } = useGet<ProfileData>('profile')
 
   useEffect(() => {
